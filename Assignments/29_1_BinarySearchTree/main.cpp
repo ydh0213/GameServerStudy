@@ -7,7 +7,6 @@
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
-
 	const char CLASS_NAME[] = "Binary Search Tree Visualizer";
 
 	WNDCLASS wc = {};
@@ -22,7 +21,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	HWND hwnd = CreateWindowEx(
 		0, CLASS_NAME, "BST Visualizer",
 		WS_OVERLAPPEDWINDOW,
-		CW_USEDEFAULT, CW_USEDEFAULT, 1800, 1000,
+		CW_USEDEFAULT, CW_USEDEFAULT, WIDTH, HEIGHT,
 		NULL, NULL, hInstance, NULL
 	);
 
@@ -76,6 +75,15 @@ void ProcessCommand(HWND hwnd)
 	InvalidateRect(hwnd, NULL, TRUE); // 화면 갱신
 }
 
+void ShiftTree(Node* node, int shiftX)
+{
+	if (!node) return;
+
+	node->x += shiftX;
+	ShiftTree(node->left, shiftX);
+	ShiftTree(node->right, shiftX);
+}
+
 LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
 	switch (msg)
@@ -105,7 +113,18 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 
 			// 2. 트리 그리기
 			if (g_root)
-				DrawTree(hdc, g_root, rect.right / 2, 100, rect.right / 4);
+			{
+				int startOrder = 0;
+				CalculatePositions(g_root, 0, startOrder);
+
+				int centerX = rect.right / 2;
+				int currentRootX = g_root->x;
+				int shift = centerX - currentRootX;
+
+				ShiftTree(g_root, shift);
+
+				DrawTree(hdc, g_root);
+			}
 
 			EndPaint(hwnd, &ps);
 			break;
