@@ -3,7 +3,7 @@
 
 #include "binary_search_tree.h"
 
-// --- BST 로직: 삽입 ---
+// --- 삽입 ---
 Node* Insert(Node* node, int data) {
     if (node == nullptr) return new Node(data);
 
@@ -15,13 +15,13 @@ Node* Insert(Node* node, int data) {
     return node;
 }
 
-// --- BST 로직: 최솟값 찾기 (삭제용) ---
+// --- 최솟값 찾기 (삭제용) ---
 Node* FindMin(Node* node) {
     while (node->left != nullptr) node = node->left;
     return node;
 }
 
-// --- BST 로직: 삭제 ---
+// --- 삭제 ---
 Node* Delete(Node* node, int data) {
     if (node == nullptr) return node;
 
@@ -36,10 +36,11 @@ Node* Delete(Node* node, int data) {
             delete node;
             return temp;
         }
-        else if (node->right == nullptr) {
-            Node* temp = node->left;
-            delete node;
-            return temp;
+        
+    	if (node->right == nullptr) {
+	        Node* temp = node->left;
+	        delete node;
+	        return temp;
         }
 
         // 경우 3: 자식이 둘인 경우
@@ -47,12 +48,14 @@ Node* Delete(Node* node, int data) {
         node->data = temp->data;
         node->right = Delete(node->right, temp->data);
     }
+
     return node;
 }
 
-// --- BST 로직: 트리 전체 삭제 ---
+// --- 트리 전체 삭제 ---
 void DeleteTree(Node* node) {
     if (node == nullptr) return;
+
     DeleteTree(node->left);
     DeleteTree(node->right);
     delete node;
