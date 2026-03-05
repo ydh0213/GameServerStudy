@@ -118,22 +118,26 @@ void ProfileDataOutText(const WCHAR* szFileName)
 		if (g_ProfileSamples[i].lFlag == 1)
 		{
 			double average = 0.0;
-			
+
 			if (g_ProfileSamples[i].iCall)
 			{
 				double totalTime = g_ProfileSamples[i].iTotalTime;
 
 				if (g_ProfileSamples[i].iCall > 2)
 				{
-					totalTime -= g_ProfileSamples[i].iMax[0] - g_ProfileSamples[i].iMin[0];
+					totalTime -= g_ProfileSamples[i].iMax[0];
+					totalTime -= g_ProfileSamples[i].iMin[0];
+					average = totalTime / (g_ProfileSamples[i].iCall - 2);
 
 					if (g_ProfileSamples[i].iCall > 4)
-						totalTime -= g_ProfileSamples[i].iMax[1] - g_ProfileSamples[i].iMin[1];
+					{
+						totalTime -= g_ProfileSamples[i].iMax[1];
+						totalTime -= g_ProfileSamples[i].iMin[1];
+						average = totalTime / (g_ProfileSamples[i].iCall - 4);
+					}
 				}
-				
-				average = totalTime / g_ProfileSamples[i].iCall;
 			}
-			
+
 			fout << std::setw(25) << g_ProfileSamples[i].szName << L" | "
 				<< std::fixed << std::setprecision(4)
 				<< std::setw(14) << average << L" §Á | "
@@ -167,13 +171,17 @@ void ProfileDataPrint()
 
 				if (g_ProfileSamples[i].iCall > 2)
 				{
-					totalTime -= g_ProfileSamples[i].iMax[0] - g_ProfileSamples[i].iMin[0];
+					totalTime -= g_ProfileSamples[i].iMax[0];
+					totalTime -= g_ProfileSamples[i].iMin[0];
+					average = totalTime / (g_ProfileSamples[i].iCall - 2);
 
 					if (g_ProfileSamples[i].iCall > 4)
-						totalTime -= g_ProfileSamples[i].iMax[1] - g_ProfileSamples[i].iMin[1];
+					{
+						totalTime -= g_ProfileSamples[i].iMax[1];
+						totalTime -= g_ProfileSamples[i].iMin[1];
+						average = totalTime / (g_ProfileSamples[i].iCall - 4);
+					}
 				}
-
-				average = totalTime / g_ProfileSamples[i].iCall;
 			}
 
 			std::wcout << std::setw(25) << g_ProfileSamples[i].szName << L" | "
