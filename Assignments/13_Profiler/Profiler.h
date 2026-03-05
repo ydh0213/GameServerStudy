@@ -32,6 +32,9 @@ void ProfileEnd(const WCHAR* szName);
 // 프로파일링 된 데이터를 Text 파일로 출력
 void ProfileDataOutText(const WCHAR* szFileName);
 
+// 프로파일링 된 데이터를 콘솔 출력
+void ProfileDataPrint();
+
 
 #ifdef PROFILE
 	#define PRO_BEGIN(TagName)	ProfileBegin(TagName)
