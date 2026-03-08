@@ -1,0 +1,2 @@
+ARRAY   [00858DA8] [   40] C:\Users\Yoondy\source\repos\ydh0213\GameServerStudy\Assignments\14_NewDeleteOverloading\main.cpp : 28
+NOALLOC [00008123]

@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="14_NewDeleteOverloading.vcxproj" Id="0071044d-c53f-4a08-91ee-6a374dcf98cd" />
+</Solution>
