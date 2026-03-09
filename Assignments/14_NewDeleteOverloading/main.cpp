@@ -14,8 +14,6 @@ void WorkerThread()
 
 	// 해제 안 함: Leak Error
 	double* leakPtr = new double[5];
-	leakPtr[0] = 9.9;
-	std::cout << leakPtr << std::endl;
 }
 
 int main()
@@ -31,7 +29,7 @@ int main()
 	int* a = new int[10];
 	delete a; // delete[] 를 안 썼으므로 ARRAY 에러!
 
-	int* b = (int*)0x00008123;
+	int* b = nullptr;
 	delete b; // 할당한 적 없으므로 NOALLOC 에러!
 
 	for (auto& th : threads)
