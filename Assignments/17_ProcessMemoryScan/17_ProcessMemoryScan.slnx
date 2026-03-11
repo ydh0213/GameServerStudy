@@ -3,6 +3,6 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="MemoryHacker/MemoryHacker.vcxproj" />
-  <Project Path="TargetGame/TargetGame.vcxproj" />
+  <Project Path="MemoryHacker/MemoryHacker.vcxproj" Id="2df46cd1-a07a-4d34-8292-7123281c629a" />
+  <Project Path="TargetGame/TargetGame.vcxproj" Id="b325e4e9-754c-4092-8d0e-072746d0b935" />
 </Solution>
