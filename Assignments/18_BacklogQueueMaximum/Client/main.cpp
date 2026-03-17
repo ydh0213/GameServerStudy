@@ -13,7 +13,7 @@ int main()
 	WSADATA wsaData;
 	if (WSAStartup(MAKEWORD(2, 2), &wsaData) != 0)
 	{
-		cerr << "WSAStartup failed! Error: " << WSAGetLastError() << '\n';
+		cerr << "WSAStartup 실패! Error: " << WSAGetLastError() << '\n';
 		return 1;
 	}
 
@@ -33,15 +33,15 @@ int main()
 
 	while (true)
 	{
-		SOCKET clientSocket = socket(AF_INET, SOCK_STREAM, 0);
+		SOCKET sock = socket(AF_INET, SOCK_STREAM, 0);
 
-		if (clientSocket == INVALID_SOCKET)
+		if (sock == INVALID_SOCKET)
 		{
 			cerr << "소켓 생성 실패! Error: " << WSAGetLastError() << '\n';
 			continue;
 		}
 
-		if (connect(clientSocket, (sockaddr*)&serverAddr, sizeof serverAddr) == SOCKET_ERROR)
+		if (connect(sock, (sockaddr*)&serverAddr, sizeof serverAddr) == SOCKET_ERROR)
 		{
 			cerr << "\n[!] 연결 실패! 큐가 꽉 찼거나 타임아웃 발생. Error: " << WSAGetLastError() << '\n';
 			cout << "총 성공한 연결 횟수 (큐에 들어간 개수): " << connectedCount << "\n";
