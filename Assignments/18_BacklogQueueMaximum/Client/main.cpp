@@ -6,7 +6,7 @@
 using namespace std;
 
 const char* SERVER_IP = "127.0.0.1";
-constexpr int SERVER_PORT = 8080;
+constexpr int SERVER_PORT = 8888;
 
 int main()
 {

@@ -5,7 +5,7 @@
 
 using namespace std;
 
-constexpr int SERVER_PORT = 8080;
+constexpr int SERVER_PORT = 8888;
 
 int main()
 {
