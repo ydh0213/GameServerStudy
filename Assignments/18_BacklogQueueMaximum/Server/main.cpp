@@ -5,10 +5,13 @@
 
 using namespace std;
 
-constexpr int SERVER_PORT = 8080;
+constexpr int SERVER_PORT = 8888;
 
 int main()
 {
+	cout << "PID: " << GetCurrentProcessId() << '\n';
+	cout << "======================================\n";
+
 	WSADATA wsaData;
 	if (WSAStartup(MAKEWORD(2, 2), &wsaData) != 0)
 	{
@@ -42,13 +45,15 @@ int main()
 	string input;
 	cin >> input;
 
-	if (input == "1") {
+	if (input == "1")
+	{
 		cout << "\n큐에서 연결을 수락하기 시작합니다.\n";
 		int acceptCount = 0;
 
 		vector<SOCKET> acceptedSockets;
 
-		while (true) {
+		while (true)
+		{
 			fd_set readFds;
 			FD_ZERO(&readFds);
 			FD_SET(listenSock, &readFds);
@@ -57,19 +62,23 @@ int main()
 
 			int selectResult = select(0, &readFds, nullptr, nullptr, &timeout);
 
-			if (selectResult > 0) {
+			if (selectResult > 0)
+			{
 				SOCKET clientSocket = accept(listenSock, nullptr, nullptr);
 
-				if (clientSocket != INVALID_SOCKET) {
+				if (clientSocket != INVALID_SOCKET)
+				{
 					++acceptCount;
 					acceptedSockets.emplace_back(clientSocket);
 				}
 			}
-			else if (selectResult == 0) {
+			else if (selectResult == 0)
+			{
 				cout << "큐가 비었습니다!\n";
 				break;
 			}
-			else {
+			else
+			{
 				cout << "select() 에러 발생! Error: " << WSAGetLastError() << "\n";
 				break;
 			}
@@ -87,7 +96,5 @@ int main()
 
 	closesocket(listenSock);
 	WSACleanup();
-
-	system("pause"); // 프로그램 종료 전 대기
 	return 0;
 }
