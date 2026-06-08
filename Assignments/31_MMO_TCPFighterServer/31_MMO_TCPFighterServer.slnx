@@ -3,5 +3,5 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="28_MemoryPool_FreeList.vcxproj" Id="f28a8441-26f2-47ff-ae2e-f953a12f31f9" />
+  <Project Path="31_MMO_TCPFighterServer.vcxproj" Id="87d020ab-4d94-4eaa-a8b9-85e8aab6dab8" />
 </Solution>
