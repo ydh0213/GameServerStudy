@@ -25,7 +25,7 @@ namespace Client
                 {
                     Socket sock = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
-                    // 소켓 옵션 중 LingerOption(true, 0)으로 설정하여 Close() 시 즉시 FIN 패킷 전송 (TIME_WAIT 상태 방지)
+                    // 소켓 옵션 중 LingerOption(true, 0)으로 설정하여 Close() 시 즉시 연결 종료 (TIME_WAIT 상태 방지)
                     sock.LingerState = new LingerOption(true, 0);
 
                     try
