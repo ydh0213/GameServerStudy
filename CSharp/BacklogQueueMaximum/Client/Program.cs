@@ -6,20 +6,20 @@ namespace Client
     {
         private const string SERVER_IP = "127.0.0.1";
         private const int SERVER_PORT = 8888;
-        private const int BATCH_NUMBER = 14000;
-        private const int WAIT_MS = 125000;
+        private const int BATCH_NUMBER = 13200;
+        private const int WAIT_MS = 125_000;
 
         static void Main(string[] args)
         {
             int totalConnectedCount = 0;
             bool isQueueFull = false; // 백로그 큐가 꽉 찼는지
 
-            Console.WriteLine("연결 폭격을 시작합니다 (14,000개 배치 및 125초 대기 모드)...");
+            Console.WriteLine($"연결 폭격을 시작합니다 ({BATCH_NUMBER}개 배치 및 {WAIT_MS / 1000}초 대기 모드)...");
 
             while (!isQueueFull)
             {
                 List<Socket> sockets = new List<Socket>();
-                Console.WriteLine("\n[배치 시작] 새로운 14,000개 연결을 시도합니다...");
+                Console.WriteLine($"\n[배치 시작] 새로운 {BATCH_NUMBER}개 연결을 시도합니다...");
 
                 for (int i = 0; i < BATCH_NUMBER; i++)
                 {
@@ -54,7 +54,7 @@ namespace Client
                     break;
 
                 // Close() 후 TIME_WAIT 상태를 거쳐 포트가 해제되길 기다림
-                Console.WriteLine("[휴식] 포트 고갈(10055) 방지를 위해 125초간 대기합니다...");
+                Console.WriteLine($"[휴식] 포트 고갈(10055) 방지를 위해 {WAIT_MS / 1000}초간 대기합니다...");
                 Thread.Sleep(WAIT_MS);
             }
 
