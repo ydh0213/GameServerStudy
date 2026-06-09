@@ -7,7 +7,7 @@ namespace Client
         private const string SERVER_IP = "127.0.0.1";
         private const int SERVER_PORT = 8888;
         private const int BATCH_NUMBER = 13200;
-        private const int WAIT_MS = 125_000;
+        private const int WAIT_MS = 1_000;
 
         static void Main(string[] args)
         {
@@ -24,6 +24,9 @@ namespace Client
                 for (int i = 0; i < BATCH_NUMBER; i++)
                 {
                     Socket sock = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+
+                    // 소켓 옵션 중 LingerOption(true, 0)으로 설정하여 Close() 시 즉시 FIN 패킷 전송 (TIME_WAIT 상태 방지)
+                    sock.LingerState = new LingerOption(true, 0);
 
                     try
                     {
