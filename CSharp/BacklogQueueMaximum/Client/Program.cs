@@ -38,8 +38,10 @@ namespace Client
                     }
                     catch (SocketException ex)
                     {
-                        // 큐가 꽉 찼거나(10061/10060) 버퍼가 부족함(10055)
-                        Console.WriteLine($"\n[!] 연결 실패! 큐가 꽉 찼습니다. Error: {ex.NativeErrorCode}");
+                        Console.WriteLine($"\n[!] NativeErrorCode: {ex.NativeErrorCode}");
+                        Console.WriteLine($"[!] SocketErrorCode: {ex.SocketErrorCode}");
+                        Console.WriteLine($"[!] Message: {ex.Message}");
+
                         sock.Close();
                         isQueueFull = true;
                         break;
