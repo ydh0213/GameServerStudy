@@ -89,3 +89,9 @@ PC를 5대나 구하기 힘들다면 1대로 해결하는 방법도 있다. 클�
   <img alt="백로그 큐에서 꺼내와 전부 Accept 했을 때 48,158K" src="https://github.com/user-attachments/assets/5b47c3b1-4199-41fe-be98-c69c15637b1a" /><br>
   <i>백로그 큐에서 꺼내와 전부 Accept 했을 때 48,158K</i>
 </p>
+
+<br>
+
+## Reference
+
+- https://velog.io/@be_en9812/%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EC%84%9C%EB%B2%84%EC%9D%98-%EB%B0%B1%EB%A1%9C%EA%B7%B8-%ED%81%90%EA%B0%80-%EA%B0%80%EB%93%9D-%EC%B0%A8%EB%A9%B4-%EC%96%B4%EB%96%BB%EA%B2%8C-%ED%95%A0%EA%B9%8C
