@@ -3,5 +3,6 @@
     <File Path="README.md" />
   </Folder>
   <Project Path="Client/Client.csproj" Id="0419e46d-791e-4bc8-849a-c87c0eb626cc" />
+  <Project Path="ClientAsync/ClientAsync.csproj" Id="bfe3f5ad-96d0-45ff-9b64-d2f9e482bf62" />
   <Project Path="Server/Server.csproj" Id="bcfdb8e4-c40c-43d9-9026-d70899f6a406" />
 </Solution>
